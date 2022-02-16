@@ -5,8 +5,32 @@
     <select id="countAll" resultType="Integer">
         SELECT COUNT(*) FROM student
     </select>
-    
-    <resultMap id="StudentMap" type="com.example.mybatissimple2.model.Student">
-    <result property="name" column="name"/>
+
+    <insert id="insertStudent" parameterType="com.example.mybatissimple2.model.Student">
+        INSERT INTO student(id,name ,age,phone,gmail) VALUES (#{id},#{name},#{age},#{phone},#{gmail});
+    </insert>
+
+    <update id="updateStudentById" parameterType="Integer">
+        UPDATE student SET name =#{name},age=#{age},phone=#{phone},gmail=#{gmail} WHERE ID=#{id};
+    </update>
+
+    <delete id="deleteStudentById" parameterType="Integer">
+        DELETE FROM student WHERE ID=#{id};
+    </delete>
+
+    <select id="selectAllStudent" resultMap="result">
+        SELECT * FROM student;
+    </select>
+
+    <select id="selectStudentById" parameterType="Integer" resultType="com.example.mybatissimple2.model.Student">
+        SELECT * FROM student WHERE ID=#{id};
+    </select>
+
+    <resultMap id="result" type="com.example.mybatissimple2.model.Student">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="age" column="age"/>
+        <result property="phone" column="phone"/>
+        <result property="gmail" column="gmail"/>
     </resultMap>
 </mapper>

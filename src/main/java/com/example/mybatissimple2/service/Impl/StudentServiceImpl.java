@@ -2,15 +2,16 @@ package com.example.mybatissimple2.service.Impl;
 
 import com.example.mybatissimple2.mapper.StudentMapper;
 import com.example.mybatissimple2.model.Student;
+import com.example.mybatissimple2.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class StudentServiceImpl implements StudentService{
-@Autowired
-StudentMapper studentMapper;
+public class StudentServiceImpl implements StudentService {
+    @Autowired
+    private StudentMapper studentMapper;
     /*method*/
 
     public StudentServiceImpl() {
@@ -38,8 +39,8 @@ StudentMapper studentMapper;
     }
 
     @Override
-    public int selectStudentById(int studentId) {
-        return studentMapper.deleteStudentById(studentId);
+    public Student selectStudentById(int studentId) {
+        return studentMapper.selectStudentById(studentId);
     }
 
     @Override
